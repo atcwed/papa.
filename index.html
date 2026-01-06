@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>¡Feliz Cumpleaños Elías! 👔</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+body{
+  margin:0; height:100vh;
+  background:linear-gradient(135deg,#1e3c72,#2a5298);
+  display:flex; justify-content:center; align-items:center;
+  font-family:'Quicksand', sans-serif; overflow:hidden;
+}
+
+.contenedor{ width:360px; height:600px; perspective:1600px; }
+
+.carta{
+  width:100%; height:100%; position:relative;
+  transform-style:preserve-3d; transition:transform 1.5s ease;
+  cursor:pointer;
+}
+
+.carta.abierta{ transform:rotateY(-175deg); }
+
+.portada, .interior{
+  position:absolute; width:100%; height:100%;
+  border-radius:20px; backface-visibility:hidden;
+  box-shadow:0 20px 40px rgba(0,0,0,0.4); padding:25px; box-sizing:border-box;
+}
+
+.portada{
+  background:linear-gradient(135deg,#2c3e50,#4ca1af);
+  color:white; display:flex; flex-direction:column;
+  justify-content:center; align-items:center; border: 5px solid rgba(255,255,255,0.8);
+}
+.portada span{ font-size:4rem; }
+.portada h2 { font-family: 'Dancing Script', cursive; font-size: 2.2rem; }
+
+.interior{
+  background:#fdfdfd; color:#333; transform:rotateY(180deg);
+  overflow-y:auto; display: flex; flex-direction: column;
+}
+
+h1{ text-align:center; color:#1e3c72; font-family: 'Dancing Script', cursive; margin: 0 0 10px 0; }
+
+.mensaje{ font-size:1.05rem; line-height:1.6; text-align: center; flex-grow: 1; }
+
+.firma{
+  margin-top:15px; text-align:right; font-style:italic;
+  color:#1e3c72; font-family: 'Dancing Script', cursive; font-size: 1.3rem;
+}
+
+.spotify-container { margin-top: 10px; border-radius: 12px; overflow: hidden; min-height: 80px; }
+</style>
+</head>
+
+<body>
+
+<div class="contenedor">
+  <div class="carta" id="miCarta" onclick="abrirCarta()">
+
+    <div class="portada">
+      <span>🎁</span>
+      <h2>Para Elías</h2>
+      <p>Toca para abrir ✨</p>
+    </div>
+
+    <div class="interior">
+      <h1>🎈 ¡Feliz Cumpleaños Papá! 🎈</h1>
+
+      <div class="mensaje">
+      Papá, hoy celebro tu vida y agradezco a Dios por tenerte. Gracias por ser mi guía, por tu fuerza y por todo el esfuerzo que haces cada día por nosotros 👔<br><br>
+      Que Dios te bendiga siempre, te guarde y te proteja, y que cada paso de tu vida esté lleno de salud, paz y mucha felicidad 🙏✨<br><br>
+      ¡Te quiero mucho, Elías! Eres el mejor ejemplo que podría tener.
+      </div>
+
+      <div class="firma">
+        Con todo mi cariño 💌<br>
+        Tu hijo(a)
+      </div>
+      
+      <div class="spotify-container">
+        <iframe src="https://open.spotify.com/embed/track/303vA9N0m637pI49rXo3Fp?utm_source=generator" width="100%" height="80" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function abrirCarta(){
+  const carta = document.getElementById('miCarta');
+  if(!carta.classList.contains('abierta')){
+    carta.classList.add('abierta');
+    lanzarConfeti();
+  }
+}
+
+function lanzarConfeti() {
+  var end = Date.now() + (5 * 1000);
+  (function frame() {
+    confetti({ particleCount: 4, angle: 60, spread: 60, origin: { x: 0 }, colors: ['#1e3c72', '#4ca1af', '#ffffff'] });
+    confetti({ particleCount: 4, angle: 120, spread: 60, origin: { x: 1 }, colors: ['#1e3c72', '#4ca1af', '#ffffff'] });
+    if (Date.now() < end) requestAnimationFrame(frame);
+  }());
+}
+</script>
+
+</body>
+</html>
